@@ -8,7 +8,6 @@ const instances = require("./routes/instances");
 const app = express();
 
 app.use(bodyParser.json({ limit: "10mb" }));
-
 auth(app);
 
 instances(app);

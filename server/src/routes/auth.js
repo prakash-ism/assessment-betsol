@@ -2,7 +2,7 @@ const { userExists, createUser } = require("../lib/users");
 const Iron = require("@hapi/iron");
 const { isLoggedIn } = require("../middleware/auth");
 
-const auth = (app) => {
+const auth = app => {
   app.post("/api/login", async (req, res) => {
     const { email, password } = req.body;
     if (!email || !password) {
@@ -17,7 +17,7 @@ const auth = (app) => {
         Iron.defaults
       );
       res.setHeader("authorization", token);
-      res.json({ success: true, message: "Logged in successfully!" });
+      res.json({ success: true, message: "Logged in successfully!", token });
     }
   });
 
@@ -34,7 +34,7 @@ const auth = (app) => {
           Iron.defaults
         );
         res.setHeader("authorization", token);
-        res.json({ success: true, message: "Signed up successfully!" });
+        res.json({ success: true, message: "Signed up successfully!", token });
       } else {
         res.json({ success: false, message: "User exists already" });
       }

@@ -3,10 +3,12 @@ const { userExists } = require("../lib/users");
 
 const isLoggedIn = async (req, res, next) => {
   const { authorization } = req.headers;
+  console.log("header", req.headers);
   if (!authorization) {
     res.send({ success: false, message: "Missing authorization token" });
   } else {
-    const token = authorization.split(" ")[1];
+    console.log("authorization", authorization);
+    const token = authorization;
     if (!token) {
       res.send({ success: false, message: "Invalid authorization token" });
     }
@@ -30,5 +32,5 @@ const isLoggedIn = async (req, res, next) => {
 };
 
 module.exports = {
-  isLoggedIn,
+  isLoggedIn
 };

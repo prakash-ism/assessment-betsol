@@ -1,16 +1,16 @@
 const { users } = require("../_data");
 
-const userExists = (email) => {
-  return users.some((user) => user.email === email);
+const userExists = email => {
+  return users.some(user => user.email === email);
 };
 
 const createUser = (email, password) => {
-  const duplicateUser = users.some((user) => user.email === email);
+  const duplicateUser = users.some(user => user.email === email);
   if (!duplicateUser) {
     users.push({
       email,
       password,
-      role: "user",
+      role: "user"
     });
     return true;
   }
@@ -19,5 +19,5 @@ const createUser = (email, password) => {
 
 module.exports = {
   userExists,
-  createUser,
+  createUser
 };
