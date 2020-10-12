@@ -61,9 +61,7 @@ class BaseService {
     return new Promise(async (resolve, reject) => {
       try {
         let res = await httpClient.post(url, data, { headers });
-        setTimeout(() => {
-          console.log("making Post request");
-        }, 1000);
+        setTimeout(() => {}, 1000);
         return resolve(res.data);
       } catch (error) {
         reject(error);

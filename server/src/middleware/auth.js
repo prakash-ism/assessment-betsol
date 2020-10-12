@@ -3,11 +3,9 @@ const { userExists } = require("../lib/users");
 
 const isLoggedIn = async (req, res, next) => {
   const { authorization } = req.headers;
-  console.log("header", req.headers);
   if (!authorization) {
     res.send({ success: false, message: "Missing authorization token" });
   } else {
-    console.log("authorization", authorization);
     const token = authorization;
     if (!token) {
       res.send({ success: false, message: "Invalid authorization token" });
